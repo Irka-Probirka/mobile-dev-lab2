@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">lab2</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="empty" />
+    <string name="button">Вычислить</string>
+</resources>
