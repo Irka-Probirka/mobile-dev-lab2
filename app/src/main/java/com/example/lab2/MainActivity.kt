@@ -26,12 +26,11 @@ class MainActivity : AppCompatActivity() {
             val C = c.text.toString().format("%.2f").toDouble()
 
             if (A != 0.0) {
-
                 val disc: Double = discriminant(A, B, C)
 
                 if (disc == 0.0) {
                     val x = (-B) / (A * 2)
-                    result.text = "x = ${x.toInt()}"
+                    result.text = "x1 = x2 = ${x.toInt()}"
                 } else if (disc > 0.0) {
                     val x1 = (-B + sqrt(disc)) / (A * 2)
                     val x2 = (-B - sqrt(disc)) / (A * 2)
@@ -40,8 +39,14 @@ class MainActivity : AppCompatActivity() {
                     result.text = "Нет корней"
                 }
             }
+            else if(B != 0.0){
+                result.text = "Уравнение линейное: x = ${-C/B}"
+            }
+            else if(C != 0.0){
+                result.text = "Нет корней"
+            }
             else{
-                result.text = "Не является квадратным уравнением"
+                result.text = "Верно при любом X"
             }
         }
     }
