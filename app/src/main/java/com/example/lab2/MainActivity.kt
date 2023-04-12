@@ -9,7 +9,7 @@ import android.widget.TextView
 import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,29 +20,28 @@ class MainActivity : AppCompatActivity() {
         val result = findViewById<TextView>(R.id.textView_result)
         val button = findViewById<Button>(R.id.button)
 
-        val A = a.toString().format("%.2f").toDoubleOrNull()
-        val B = b.toString().format("%.2f").toDoubleOrNull()
-        val C = c.toString().format("%.2f").toDoubleOrNull()
-
         button.setOnClickListener() {
-            result.text = "a=$A, b=$B, c=$C"
-            if (A != null && B != null && C != null) {
-                result.text = "Ошибка в вводе данных"
-            }
-            else {
-                val disc: Double = discriminant(A!!, B!!, C!!)
+            val A = a.text.toString().format("%.2f").toDouble()
+            val B = b.text.toString().format("%.2f").toDouble()
+            val C = c.text.toString().format("%.2f").toDouble()
+
+            if (A != 0.0) {
+
+                val disc: Double = discriminant(A, B, C)
 
                 if (disc == 0.0) {
-                    val x = (-B) / (2 * A)
-                    result.text = "x1 = x2 = $x"
+                    val x = (-B) / (A * 2)
+                    result.text = "x = ${x.toInt()}"
                 } else if (disc > 0.0) {
                     val x1 = (-B + sqrt(disc)) / (A * 2)
                     val x2 = (-B - sqrt(disc)) / (A * 2)
-                    result.text = "x1 = $x1, x2 = $x2"
-                }
-                else{
+                    result.text = "x1 = ${x1.toInt()}, x2 = ${x2.toInt()}"
+                } else {
                     result.text = "Нет корней"
                 }
+            }
+            else{
+                result.text = "Не является квадратным уравнением"
             }
         }
     }
@@ -52,5 +51,4 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun sqr(x: Double): Double = x * x
-
 }

@@ -46,9 +46,10 @@
 
     <TextView
         android:id="@+id/textView_result"
-        android:layout_width="103dp"
-        android:layout_height="50dp"
+        android:layout_width="329dp"
+        android:layout_height="65dp"
         android:text="@string/empty"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
