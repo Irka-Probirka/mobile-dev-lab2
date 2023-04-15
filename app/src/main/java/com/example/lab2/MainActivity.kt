@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             else if(B != 0.0){
-                result.text = "Уравнение линейное: x = ${-C/B}"
+                result.text = "Уравнение линейное: x = ${(-C/B).toInt()}"
             }
             else if(C != 0.0){
                 result.text = "Нет корней"
